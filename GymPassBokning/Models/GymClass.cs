@@ -7,7 +7,7 @@ namespace GymPassBokning.Models
 {
     public class GymClass
     {
-  public int GymClassId { get; set; }
+        public int GymClassId { get; set; }
         public string Name { get; set; }
         public DateTime StartTime { get; set; }
         public TimeSpan Duration { get; set; }

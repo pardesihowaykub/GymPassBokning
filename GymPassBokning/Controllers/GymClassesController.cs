@@ -19,10 +19,38 @@ namespace GymPassBokning.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View(db.Classes.ToList());
+            var date = DateTime.Now;
+            var dates = from v in db.Classes
+                        select v;
+            dates = dates.Where(v => v.StartTime > date);
+            //return View(db.Classes.ToList());
+            return View(dates.ToList());
         }
-        
 
+        public ActionResult BookedPass()
+        {
+            var date = DateTime.Now;
+            var dates = from v in db.Classes
+                        select v;
+            
+            
+            dates = dates.Where(v => v.StartTime > date);
+            //GymClass CurrentClass = db.Classes.Where(g => g.GymClassId == g.GymClassId).FirstOrDefault();
+            //ApplicationUser CurrentUser = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            
+              //  return View(db.Classes.ToList());
+           
+            //return View(db.Classes.ToList());
+           
+            return View("BookedPass",dates.ToList());
+           
+        }
+        public ActionResult History()
+        {
+            
+           return View(db.Classes.ToList());
+           
+        }
         //[Authorize(Roles="admin")]
         // GET: GymClasses/Details/5
         [AllowAnonymous]
