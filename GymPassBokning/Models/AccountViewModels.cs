@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace GymPassBokning.Models
@@ -64,6 +65,9 @@ namespace GymPassBokning.Models
 
     public class RegisterViewModel
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+       
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

@@ -3,6 +3,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+using System;
 
 namespace GymPassBokning.Models
 {
@@ -16,6 +18,14 @@ namespace GymPassBokning.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        //public int MemberId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FullName { get { return FirstName + "" + LastName; }  }
+        public DateTime TimeOfRegistration { get; set; }
+
+        public virtual ICollection<GymClass> AttendedClasses { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +39,8 @@ namespace GymPassBokning.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<GymClass> Classes { get; set; }
+     
     }
 }
